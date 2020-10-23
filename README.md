@@ -3,7 +3,16 @@
 This repository contains information and code that was formed during the [RISC-V MYTH Workshop](https://github.com/stevehoover/RISC-V_MYTH_Workshop). A RISC-V pipelined core that supports RV32I base integer instructions was developed on [Makerchip](https://www.makerchip.com/) and written in [TL-Verilog](http://tl-x.org/).
 
 # Table of Contents
-- [Introduction to RISC-V ISA](#introduction-to-risc-v-isa)
+- [Day 1](#day-1)
+    - [Introduction to RISC-V ISA](#introduction-to-risc-v-isa)
+    - [GNU Compiler Toolchain](#gnu-compiler-toolchain)
+        - [RISC-V Toolchain](#risc-v-toolchain)
+- [Day 2](#day-2)
+    - [Application Binary Interface (ABI)](#application-binary-interface-abi)
+    - [Day 2 Lab: ABI Function Calls](#day-2-lab-abi-function-calls)
+- [Day 3](#day-3)
+    - [TL-Verilog and Makerchip](#tl-verilog-and-makerchip)
+    - [Day 3 Lab: Calculator Single Value Memory Lab](#day-3-lab-calculator-single-value-memory-lab)
 
 # Day 1
 ## Introduction to RISC-V ISA
@@ -13,16 +22,16 @@ RISC-V is an open standard instruction set architecture (ISA), meaning it is pro
 ## GNU Compiler Toolchain
 
 The GNU compiler toolchain is a collection of programming tools used for developing applications and operating systems; it has tools that make and compile code into machine-readable programs. The flow from user to machine code is as follows:
-1. Preprocessor: process user code to be read by compiler such as macro expansion and file inclusion.
-2. Compiler: compile source code to assembly instructions
-3. Assembler: convert assembly to relocatable machine code
-4. Linker: converts assembler output to absolute machine code
+1. **Preprocessor:** process user code to be read by compiler such as macro expansion and file inclusion.
+2. **Compiler:** compile source code to assembly instructions
+3. **Assembler:** convert assembly to relocatable machine code
+4. **Linker:** converts assembler output to absolute machine code
 
 ### RISC-V Toolchain
 
 Compile command:
 
-`$ riscv64-unkown-elf-gcc -O<1/fast> -mabi=lp<XLEN> -march=rv<XLEN>i -o <output_program> <input_user_code> [<input_user_code>...]`
+`$ riscv64-unkown-elf-gcc -O<1/fast> -mabi=lp<XLEN> -march=rv<XLEN>i -o <output_program> <input_user_file> [<input_user_file>...]`
 
 Assembly preview command:
 
@@ -57,18 +66,18 @@ The Application Binary Interface (ABI), also known as the System Call Interface,
 | x28-31 | t3-6 | Temporaries |
 
 There are 3 types of instructions:
-1. R-type: operate only on registers<br>
+1. **R-type:** operate only on registers<br>
     Ex: `add x8, x24, x8`
-2. I-type: operate on registers and immediate values<br>
+2. **I-type:** operate on registers and immediate values<br>
     Ex: `ld x8, 16(x23)`
-3. S-type: operate on source registers and store in immediate value<br>
+3. **S-type:** operate on source registers and store in immediate value<br>
     Ex: `sd x8, 8(x23)`
 
 ## Day 2 Lab: ABI Function Calls
 
 A simple program for summing numbers 1 to 9 was created; view source in [Day2](Day2) folder. The compiled output in assembly looks like this:
 
-![day2_lab_assembly](Pictures/day2_lab_assembly.png)
+![day2_lab_assembly](Day2/day2_lab_assembly.png)
 
 # Day 3
 ## TL-Verilog and Makerchip
@@ -79,6 +88,6 @@ Transaction-Level Verilog ([TL-Verilog](https://www.redwoodeda.com/tl-verilog)) 
 
 ## Day 3 Lab: Calculator Single Value Memory Lab
 
-A simple calculator with 1 memory storage and validity was created; view source in [Day3](Day3) folder. The diagram and viz showing one cycle of operation:
+A simple calculator with 1 memory storage and validity was created; view source in [Day3_5](Day3_5) folder. The diagram and viz showing one cycle of operation:
 
-![day3_lab_calculator](Pictures/day3_lab_calculator.png)
+![day3_lab_calculator](Day3_5/day3_lab_calculator.png)
