@@ -13,6 +13,9 @@ This repository contains information and code that was formed during the [RISC-V
 - [Day 3](#day-3)
     - [TL-Verilog and Makerchip](#tl-verilog-and-makerchip)
     - [Day 3 Lab: Calculator Single Value Memory Lab](#day-3-lab-calculator-single-value-memory-lab)
+- [Day 4](#day-4)
+    - [RISC-V Microarchitecture](#risc-v-microarchitecture)
+    - [Day 4 Lab: Simple RISC-V Core](#day-4-lab-simple-risc-v-core)
 
 # Day 1
 ## Introduction to RISC-V ISA
@@ -88,6 +91,19 @@ Transaction-Level Verilog ([TL-Verilog](https://www.redwoodeda.com/tl-verilog)) 
 
 ## Day 3 Lab: Calculator Single Value Memory Lab
 
-A simple calculator with 1 memory storage and validity was created; view source in [Day3_5](Day3_5) folder. The diagram and viz showing one cycle of operation:
+A simple calculator with single value memory and validity was created; view source [here](Day3_5/calculator_solutions.tlv). The diagram and viz showing one cycle of operation:
 
 ![day3_lab_calculator](Day3_5/day3_lab_calculator.png)
+
+# Day 4
+## RISC-V Microarchitecture
+
+The building blocks of a simple CPU are program counter (PC), instruction memory (IMem Rd), instruction decoder (Dec), register file read (RF Rd), arithmetic logic unit (ALU), register file write (RF Wr), and data memory (DMem Rd/Wr). The following diagram depicts the connections between these blocks:
+
+![day4_riscv_block_diagram](Day3_5/day4_riscv_block_diagram.png)
+
+## Day 4 Lab: Simple RISC-V Core
+
+A simple RISC-V core from fetch and decode to control logic with branching was created; view source [here](Day3_5/risc-v_solutions.tlv). The diagram and viz showing final instruction executed:
+
+![day4_lab_riscv_simple](Day3_5/day4_lab_riscv_simple.png)
