@@ -16,6 +16,9 @@ This repository contains information and code that was formed during the [RISC-V
 - [Day 4](#day-4)
     - [RISC-V Microarchitecture](#risc-v-microarchitecture)
     - [Day 4 Lab: Simple RISC-V Core](#day-4-lab-simple-risc-v-core)
+- [Day 5](#day-5)
+    - [RISC-V Pipelining](#risc-v-pipelining)
+    - [Day 5 Lab: Pipelined RISC-V Core](#day-5-lab-pipelined-risc-v-core)
 
 # Day 1
 ## Introduction to RISC-V ISA
@@ -107,3 +110,29 @@ The building blocks of a simple CPU are program counter (PC), instruction memory
 A simple RISC-V core from fetch and decode to control logic with branching was created; view source [here](Day3_5/risc-v_solutions.tlv). The diagram and viz showing final instruction executed:
 
 ![day4_lab_riscv_simple](Day3_5/day4_lab_riscv_simple.png)
+
+# Day 5
+## RISC-V Pipelining
+
+Pipelining is used in designs to cut down the amount of combinational logic between flip-flops. This allows for higher clock speeds and, for a processor, more instructions per second (IPS). In order for this to function properly, the flow of logic must be broken up into pipe stages; the implemented RISC-V core's stages are seen in the below diagram:
+
+![day5_riscv_pipeline](Day3_5/day5_riscv_pipeline.png)
+
+This introduces hazards that were not seen before pipelining:
+- Control flow hazard
+    - Hazard: branch and jump instructions update PC in stage @3 when it is needed in stage @1
+    - Solution: invalidate the next 2 instructions
+- Read after write hazard
+    - Hazard: register file read occurs before register file write on previous instruction (stage @4 versus @2)
+    - Solution: for dependent instructions (write to register followed by read from same register), select previous instruction's ALU output data/register file write input data (write stage @3 is available at read stage @2)
+- Load instruction redirect
+    - Hazard: load data from memory is valid 2 cycles after register write (stage @5 versus @3)
+    - Solution: invalidate the next 2 instructions and select load data for register file write data when it is valid
+
+## Day 5 Lab: Pipelined RISC-V Core
+
+A complete RISC-V core that implements the full ISA was implemented; view source [here](Day3_5/risc-v_solutions.tlv). The diagram and viz showing store/load of final result:
+
+![day5_lab_riscv_graph](Day3_5/day5_lab_riscv_graph.svg)
+
+![day5_lab_riscv_dmem](Day3_5/day5_lab_riscv_dmem.png)
