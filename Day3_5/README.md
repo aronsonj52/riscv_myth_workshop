@@ -48,7 +48,26 @@ This introduces hazards that were not seen before pipelining:
 
 ## Day 5 Lab: Pipelined RISC-V Core
 
-A complete RISC-V core that implements the full ISA was implemented; view source [here](risc-v_solutions.tlv). The diagram and viz showing store/load of final result:
+A RISC-V core that implements the ISA was pipelined; view source [here](risc-v_solutions.tlv).
+
+### RISC-V Core Block Diagram
+
+The pipe stages are the green boxes and contain signals for that stage.
 
 ![day5_lab_riscv_graph](day5_lab_riscv_graph.svg)
 
+### Viz of Final Result being Stored/Loaded
+
+The final summation result of 45 was stored in DMem (address 1) then loaded from DMem into r15/a5.
+
+![day5_lab_riscv_dmem](day5_lab_riscv_dmem.png)
+
+### Resultant Verilog Comparison
+
+SandPiper generated ~40,000 characters of SystemVerilog from ~10,000 characters of TL-Verilog (excluding whitespace, comments, and instrumentation).
+
+![day5_lab_riscv_compare](day5_lab_riscv_compare.png)
+
+# Future Work
+
+The current state of this RISC-V core implements almost all of RV32I base instruction set. Future improvements include completing the remaining instructions in RV32I and adding instruction set extensions such as RV32M, RV32F, and RV32D.
