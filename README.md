@@ -19,6 +19,10 @@ This repository contains information and code that was formed during the [RISC-V
 - [Day 5](#day-5)
     - [RISC-V Pipelining](#risc-v-pipelining)
     - [Day 5 Lab: Pipelined RISC-V Core](#day-5-lab-pipelined-risc-v-core)
+- [Future Work](#future-work)
+- [References](#references)
+- [Acknowledgements](#acknowledgements)
+- [Contact Information](#contact-information)
 
 # Day 1
 ## Introduction to RISC-V ISA
@@ -131,8 +135,44 @@ This introduces hazards that were not seen before pipelining:
 
 ## Day 5 Lab: Pipelined RISC-V Core
 
-A complete RISC-V core that implements the full ISA was implemented; view source [here](Day3_5/risc-v_solutions.tlv). The diagram and viz showing store/load of final result:
+A RISC-V core that implements the ISA was pipelined; view source [here](Day3_5/risc-v_solutions.tlv).
+
+### RISC-V Core Block Diagram
+
+The pipe stages are the green boxes and contain signals for that stage.
 
 ![day5_lab_riscv_graph](Day3_5/day5_lab_riscv_graph.svg)
 
+### Viz of Final Result being Stored/Loaded
+
+The final summation result of 45 was stored in DMem (address 1) then loaded from DMem into r15/a5.
+
 ![day5_lab_riscv_dmem](Day3_5/day5_lab_riscv_dmem.png)
+
+### Resultant Verilog Comparison
+
+SandPiper generated ~40,000 characters of SystemVerilog from ~10,000 characters of TL-Verilog (excluding whitespace, comments, and instrumentation).
+
+![day5_lab_riscv_compare](Day3_5/day5_lab_riscv_compare.png)
+
+# Future Work
+
+The current state of this RISC-V core implements almost all of RV32I base instruction set. Future improvements include completing the remaining instructions in RV32I and adding instruction set extensions such as RV32M, RV32F, and RV32D.
+
+# References
+
+A compiled list of references used during this workshop:
+- **RISC-V International:** https://riscv.org
+- **TL-Verilog:** https://www.redwoodeda.com/tl-verilog and http://tl-x.org
+- **Makerchip:** https://www.makerchip.com
+- **Redwood EDA:** https://www.redwoodeda.com
+- **VLSI System Design:** https://www.vlsisystemdesign.com
+
+# Acknowledgements
+
+- **[Kunal Ghosh](https://github.com/kunalg123)**, Co-founder, VSD Corp. Pvt. Ltd.
+- **[Steve Hoover](https://github.com/stevehoover)**, Founder, Redwood EDA
+
+# Contact Information
+- **[Joseph Aronson](https://www.linkedin.com/in/aronsonjoseph)**, Design Engineer, Texas Instruments Inc.
+    - **Email:** [jaronson@ti.com](mailto:jaronson@ti.com)
