@@ -120,14 +120,14 @@ Pipelining is used in designs to cut down the amount of combinational logic betw
 
 This introduces hazards that were not seen before pipelining:
 - Control flow hazard
-    - Hazard: branch and jump instructions update PC in stage @3 when it is needed in stage @1
-    - Solution: invalidate the next 2 instructions
+    - **Hazard:** branch and jump instructions update PC in stage **@3** when it is needed in stage **@1**
+    - **Solution:** invalidate the next 2 instructions
 - Read after write hazard
-    - Hazard: register file read occurs before register file write on previous instruction (stage @4 versus @2)
-    - Solution: for dependent instructions (write to register followed by read from same register), select previous instruction's ALU output data/register file write input data (write stage @3 is available at read stage @2)
+    - **Hazard:** register file read occurs before register file write on previous instruction (stage **@4** versus **@2**)
+    - **Solution:** for dependent instructions (write to register followed by read from same register), select previous instruction's ALU output data/register file write input data (write stage **@3** is in parallel with read stage **@2**)
 - Load instruction redirect
-    - Hazard: load data from memory is valid 2 cycles after register write (stage @5 versus @3)
-    - Solution: invalidate the next 2 instructions and select load data for register file write data when it is valid
+    - **Hazard:** load data from memory is valid 2 cycles after register write (stage **@5** versus **@3**)
+    - **Solution:** invalidate the next 2 instructions and select load data for register file write data when it is valid
 
 ## Day 5 Lab: Pipelined RISC-V Core
 
